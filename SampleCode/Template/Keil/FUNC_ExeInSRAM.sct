@@ -1,0 +1,30 @@
+FLASH 0x00000000
+{
+	ER_STARTUP +0
+	{
+		startup_M480.o(RESET, +FIRST)
+	}
+	ER_RO +0
+    {
+        *(+RO)
+    }
+	
+    FUNC_IN_SRAM 0x20027000 0x1000 
+	{
+		gpio.o
+		software_MDIO.o(+RO)
+    }
+	
+	FASTCODE_INIT +0
+	{			
+		*(fastcode)
+	}
+	
+    ER_RW +0
+    {
+       *(+RW, +ZI)
+    }
+
+	
+}
+
